@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             alert("MetaMask not detected. Please install it.");
         }
-    });
 
     // Функция для подключения кнопки "Mint" с выбранным количеством NFT
     async function mintNFT(quantity, userAddress) {
