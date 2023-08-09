@@ -1,19 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
     const connectButton = document.getElementById("connectWallet");
+    const walletAddressSpan = document.getElementById("walletAddress");
 
     connectButton.addEventListener("click", async () => {
         if (typeof window.ethereum !== "undefined") {
             try {
-                await window.ethereum.enable(); // Запрос разрешения подключения к кошельку
+                await window.ethereum.enable();
 
                 const web3 = new Web3(window.ethereum);
-
-                // Получение аккаунта пользователя
                 const accounts = await web3.eth.getAccounts();
                 const userAddress = accounts[0];
 
-                // Показываем адрес кошелька
-                alert(`Wallet connected successfully!\nAddress: ${userAddress}`);
+                // Сокращаем адрес кошелька до 8 символов
+                const shortenedAddress = userAddress.slice(0, 8);
+
+                // Отображаем сокращенный адрес на кнопке
+                connectButton.textContent = shortenedAddress;
+
+                // Показываем полный адрес рядом с кнопкой
+                walletAddressSpan.textContent = userAddress;
+                walletAddressSpan.style.display = "inline";
+
             } catch (error) {
                 console.error("Error connecting wallet:", error);
             }
