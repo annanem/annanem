@@ -137,7 +137,7 @@ nav ul li a {
 
 .scrolling-gallery {
     display: flex;
-    animation: scroll 40s linear infinite;
+    animation: scroll 20s linear infinite;
 }
 
 .gallery {
@@ -163,6 +163,6 @@ nav ul li a {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
     }
 }
