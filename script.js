@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (quantity >= 1 && quantity <= 10) {
                     const nonce = await web3.eth.getTransactionCount(userAddress);
 
-                    const data = contract.methods.mintNFT(quantity, userAddress).encodeABI();
+                    const data = contract.methods.publicMint(quantity, userAddress).encodeABI();
 
                     const tx = {
                         nonce: nonce,
