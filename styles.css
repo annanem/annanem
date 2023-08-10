@@ -8,14 +8,17 @@ body {
 header {
     display: flex;
     justify-content: space-between;
+    position: relative;
     align-items: center;
     padding: 20px;
+    flex-wrap: wrap;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     font-size: 18px;
+    padding: 0; /* Убираем отступы */
 }
 
 nav ul li {
@@ -36,8 +39,26 @@ nav ul li a {
     padding: 8px 16px;
     border-radius: 10px; /* Уменьшенное значение для закругления краев */
     cursor: pointer;
+    white-space: nowrap; /* Текст всегда на одной строке */
+    display: inline-block; /* Элемент блочного типа для обработки ширины */
+    position: fixed; /* Фиксировать кнопку */
+    top: 20px; /* Отступ сверху */
+    right: 20px; /* Отступ справа */
+    max-width: calc(100% - 40px); /* Ограничение максимальной ширины кнопки */
 }
 
+@media (min-width: 769px) { /* Применять стили только на десктопных устройствах */
+    .connect-button {
+        white-space: nowrap; /* Текст всегда на одной строке */
+        width: auto; /* Автоматически определить ширину кнопки */
+        position: relative; /* Вернуть нормальное позиционирование */
+        top: 0; /* Сбросить вертикальный отступ */
+        right: 0; /* Сбросить горизонтальный отступ */
+        max-width: none; /* Убрать ограничение максимальной ширины */
+    }
+}
+
+  
 .main {
     padding: 20px;
 }
@@ -92,7 +113,7 @@ nav ul li a {
 }
 
 .mint-button:hover {
-    background-color: lightpink;
+    background-color: rgb(204, 255, 108);
 }
 
 .description-section {
