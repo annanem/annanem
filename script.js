@@ -24,13 +24,13 @@ const whiteList = {
 const contractAddress = '0xd5e09d94df4bc5367c579b77af5fd5d13f335731'; // Адрес вашего контракта
 document.addEventListener("DOMContentLoaded", () => {
     const connectButton = document.getElementById("connectWallet");
-   //  const walletAddressSpan = document.getElementById("walletAddress");
+    //  const walletAddressSpan = document.getElementById("walletAddress");
     const web3 = new Web3(window.ethereum);
     const contract = new web3.eth.Contract(abi, contractAddress);
     let isPublicMinting = false;
     let isWhitelistMinting = false;
     connectButton.addEventListener("click", async () => {
-        await  connectWallet();
+        await connectWallet();
     });
     async function connectWallet() {
         if (typeof window.ethereum !== "undefined") {
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 isPublicMinting = currentUnixtime > parseInt(await contract.methods.startTime().call());
                 isWhitelistMinting = !isPublicMinting && currentUnixtime > parseInt(await contract.methods.whitelistMintTime().call());
                 // Показываем полный адрес рядом с кнопкой
-               //  walletAddressSpan.textContent = userAddress;
-               //  walletAddressSpan.style.display = "inline";
+                //  walletAddressSpan.textContent = userAddress;
+                //  walletAddressSpan.style.display = "inline";
 
             } catch (error) {
                 console.error("Error connecting wallet:", error);
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     // Функция для подключения кнопки "Mint" с выбранным количеством NFT
-    async function mintNFT(quantity) {       
+    async function mintNFT(quantity) {
         // Подключение кошелька MetaMask
         if (typeof window.ethereum !== 'undefined') {
             try {
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (quantity >= 1 && quantity <= 10) {
                     const alreadyMintedAmount = parseInt(await contract.methods.mintedPerAddress(userAddress).call());
                     const payQuantity = alreadyMintedAmount > 0 ? quantity : quantity - 1;
-                    const fee = web3.utils.toBN(1000000000000000  * payQuantity);
+                    const fee = web3.utils.toBN(1000000000000000 * payQuantity);
                     const tx = await contract.methods.publicMint(quantity).send({
                         "from": userAddress,
                         "value": fee
@@ -89,8 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-     // Функция для подключения кнопки "Mint" с выбранным количеством NFT
-     async function whitelistMintNFT(quantity) {       
+    // Функция для подключения кнопки "Mint" с выбранным количеством NFT
+    async function whitelistMintNFT(quantity) {
         // Подключение кошелька MetaMask
         if (typeof window.ethereum !== 'undefined') {
             try {
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (quantity >= 1 && quantity <= 10) {
                     const alreadyMintedAmount = parseInt(await contract.methods.mintedPerAddress(userAddress).call());
                     const payQuantity = alreadyMintedAmount > 0 ? quantity : quantity - 1;
-                    const fee = web3.utils.toBN(500000000000000  * payQuantity);
+                    const fee = web3.utils.toBN(500000000000000 * payQuantity);
                     const tx = await contract.methods.whitelistMint(whiteList[userAddress], quantity).send({
                         "from": userAddress,
                         "value": fee
@@ -121,10 +121,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // Обработчик для кнопки "Mint"
     document.getElementById("mintButton").addEventListener("click", async () => {
         const quantity = parseInt(document.getElementById("quantity").value);
-        if (quantity >= 1 && quantity <= 10) {
-            await mintNFT(quantity);
-        } else {
-            console.log("Invalid quantity. Please select a value between 1 and 10.");
+        if (isPublicMinting) {
+            if (quantity >= 1 && quantity <= 10) {
+                await mintNFT(quantity);
+            } else {
+                console.log("Invalid quantity. Please select a value between 1 and 10.");
+            }
+        } else if (isWhitelistMinting) {
+            if (quantity >= 1 && quantity <= 5) {
+                await whitelistMintNFT(quantity);
+            } else {
+                console.log("Invalid quantity. Please select a value between 1 and 5.");
+            }
         }
     });
 });
