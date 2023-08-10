@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
 */
                     const payQuantity = quantity-1;
-                    const fee = web3.utils.toBN(50000000000000000 * payQuantity);
+                    const fee = web3.utils.toBN(1000000000000000  * payQuantity);
                     const tx = await contract.methods.publicMint(quantity).send({
                         "from": userAddress,
                         "value": fee
