@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const alreadyMintedAmount = parseInt(await contract.methods.mintedPerAddress(userAddress).call());
                     const payQuantity = alreadyMintedAmount > 0 ? quantity : quantity - 1;
                     const fee = web3.utils.toBN(500000000000000 * payQuantity);
-                    const tx = await contract.methods.whitelistMint(whiteList[userAddress], quantity).send({
+                    const tx = await contract.methods.whitelistMint(whiteList[userAddress.toLowerCase()], quantity).send({
                         "from": userAddress,
                         "value": fee
                     });
