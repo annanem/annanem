@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const connectButton = document.getElementById("connectWallet");
-    const walletAddressSpan = document.getElementById("walletAddress");
+   //  const walletAddressSpan = document.getElementById("walletAddress");
     const web3 = new Web3(window.ethereum);
     connectButton.addEventListener("click", async () => {
         if (typeof window.ethereum !== "undefined") {
@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 connectButton.textContent = shortenedAddress;
 
                 // Показываем полный адрес рядом с кнопкой
-                walletAddressSpan.textContent = userAddress;
-                walletAddressSpan.style.display = "inline";
+               //  walletAddressSpan.textContent = userAddress;
+               //  walletAddressSpan.style.display = "inline";
 
             } catch (error) {
                 console.error("Error connecting wallet:", error);
