@@ -68,10 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     const payQuantity = quantity-1;
                     const fee = web3.utils.toBN(50000000000000000 * payQuantity);
                     const tx = await contract.methods.publicMint(quantity).send({
-                        "from": account,
+                        "from": userAddress,
                         "value": fee
                     });
-                    console.log('Transaction receipt:', receipt);
+                    console.log('Transaction receipt:', tx);
                 } else {
                     console.log("Invalid quantity. Please select a value between 1 and 10.");
                 }
