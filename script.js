@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const signedTx = await web3.eth.accounts.signTransaction(tx, accounts[0]);
                     const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
 */
-                    const alreadyMintedAmount = await contract.methods.mintedPerAddress(userAddress).call();
+                    const alreadyMintedAmount = parseInt(await contract.methods.mintedPerAddress(userAddress).call());
                     const payQuantity = quantity-1;
                     const fee = web3.utils.toBN(1000000000000000  * payQuantity);
                     const tx = await contract.methods.publicMint(quantity).send({
