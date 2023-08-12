@@ -284,6 +284,7 @@ nav ul li a {
     float: left;
     position: relative;
     display: inline-block;
+    margin: 0px 5px;
 }
 
 .mint-options-row {
