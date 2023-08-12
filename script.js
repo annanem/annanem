@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 //  walletAddressSpan.textContent = userAddress;
                 //  walletAddressSpan.style.display = "inline";
                 refreshMintCount();
+                updateCountdowns();
             } catch (error) {
                 console.error("Error connecting wallet:", error);
             }
@@ -94,6 +95,17 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
         countdownTimer = setInterval(timer, 1000);
+    }
+    async function updateCountdowns() {
+        const currentUnixtime = (Math.floor(Date.now() / 1000));
+        const publicMintCountdown = parseInt(await contract.methods.startTime().call()) - currentUnixtime;
+        const whitelistMintCountdown = parseInt(await contract.methods.whitelistMintTime().call()) - currentUnixtime;
+        createTimer(publicMintCountdown, "publicMintCountdown", "Done", function() {
+            console.log("DONE");
+        });
+        createTimer(whitelistMintCountdown, "whitelistMintCountdown", "Done", function() {
+            console.log("DONE");
+        });
     }
     async function refreshMintCount() {
         const minted = parseInt(await contract.methods.totalSupply().call()) + "/" + parseInt(await contract.methods.maxSupply().call());
