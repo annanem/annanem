@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (whiteList[userAddress.toLowerCase()] !== undefined) {
                     whitelistTextElement.textContent = "You are whitelisted";
                 } else {
-                    whitelistTextElement.textContent = "You are NOT whitelisted";
+                    whitelistTextElement.innerHTML = "You are <b>NOT</b> whitelisted";
                 }
             } catch (error) {
                 console.error("Error connecting wallet:", error);
