@@ -31,6 +31,7 @@ const whiteList = {
 const contractAddress = '0x70310419E9c26Dc1096c3A6Ffa61D2e35e2Bc63a'; // Адрес вашего контракта
 document.addEventListener("DOMContentLoaded", () => {
     const connectButton = document.getElementById("connectWallet");
+    const mintCountElement = document.getElementById("mintCount");
     //  const walletAddressSpan = document.getElementById("walletAddress");
     const web3 = new Web3(window.ethereum);
     const contract = new web3.eth.Contract(abi, contractAddress);
@@ -59,13 +60,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Показываем полный адрес рядом с кнопкой
                 //  walletAddressSpan.textContent = userAddress;
                 //  walletAddressSpan.style.display = "inline";
-
+                refreshMintCount();
             } catch (error) {
                 console.error("Error connecting wallet:", error);
             }
         } else {
             alert("MetaMask not detected. Please install it.");
         }
+    }
+    async function refreshMintCount() {
+        const minted = parseInt(await contract.methods.totalSupply().call()) + "/" + parseInt(await contract.methods.maxSupply().call());
+        mintCountElement.textContent = minted;
     }
     // Функция для подключения кнопки "Mint" с выбранным количеством NFT
     async function mintNFT(quantity) {
@@ -86,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "value": fee
                     });
                     console.log('Transaction receipt:', tx);
+                    refreshMintCount();
                 } else {
                     console.log("Invalid quantity. Please select a value between 1 and 10.");
                 }
@@ -116,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "value": fee
                     });
                     console.log('Transaction receipt:', tx);
+                    refreshMintCount();
                 } else {
                     console.log("Invalid quantity. Please select a value between 1 and 10.");
                 }
