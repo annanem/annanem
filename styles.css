@@ -57,7 +57,9 @@ nav ul li a {
 }
 
 @media (max-width: 769px) {
-    /* Применять стили только на десктопных устройствах */ .connect-button {
+
+    /* Применять стили только на десктопных устройствах */
+    .connect-button {
         white-space: nowrap;
         /* Текст всегда на одной строке */
         width: auto;
@@ -67,21 +69,23 @@ nav ul li a {
         margin-left: auto;
         margin-right: auto;
         /* Сбросить вертикальный отступ */
-    
+
         /* Сбросить горизонтальный отступ */
         max-width: none;
         /* Убрать ограничение максимальной ширины */
         top: unset;
         right: unset;
     }
+
     nav ul li {
         margin-left: auto;
         margin-right: auto;
     }
+
     nav {
-       width: 100%; 
+        width: 100%;
     }
-    
+
 }
 
 .main {
@@ -176,25 +180,26 @@ nav ul li a {
     left: 0px;
 }
 
-.scrolling-gallery > div {
+.scrolling-gallery>div {
     display: flex
 }
 
-.scrolling-gallery > div:nth-child(1) {
+.scrolling-gallery>div:nth-child(1) {
     animation: scroll 10s linear infinite;
 }
 
-.scrolling-gallery > div:nth-child(2) {
+.scrolling-gallery>div:nth-child(2) {
     animation: scroll2 10s linear infinite;
 }
 
-.scrolling-gallery > div > div {
+.scrolling-gallery>div>div {
     animation: bop 1s linear infinite;
 }
 
 .gallery {
     display: inline-flex;
 }
+
 .gallery:nth-child(1) {
     position: absolute
 }
@@ -204,7 +209,7 @@ nav ul li a {
     height: 200px;
     margin-right: 20px;
     overflow: hidden;
-    
+
     left: 0px
 }
 
@@ -246,4 +251,28 @@ nav ul li a {
     100% {
         transform: translateY(2%)
     }
+}
+
+.scrolling-gallery>div>div:nth-child(1) {
+    animation-delay: -0.1s;
+}
+
+.scrolling-gallery>div>div:nth-child(2) {
+    animation-delay: -0.2s;
+}
+
+.scrolling-gallery>div>div:nth-child(3) {
+    animation-delay: -0.3s;
+}
+
+.scrolling-gallery>div>div:nth-child(11) {
+    animation-delay: -0.1s;
+}
+
+.scrolling-gallery>div>div:nth-child(12) {
+    animation-delay: -0.2s;
+}
+
+.scrolling-gallery>div>div:nth-child(13) {
+    animation-delay: -0.3s;
 }
