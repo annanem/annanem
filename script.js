@@ -79,7 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (quantity >= 1 && quantity <= 10) {
                     const alreadyMintedAmount = parseInt(await contract.methods.mintedPerAddress(userAddress).call());
                     const payQuantity = alreadyMintedAmount > 0 ? quantity : quantity - 1;
-                    const fee = web3.utils.toBN(1000000000000000 * payQuantity);
+                    const publicMintPrice = parseInt(await window.contract.methods.publicMintPrice().call()); 
+                    const fee = web3.utils.toBN(publicMintPrice * payQuantity);
                     const tx = await contract.methods.publicMint(quantity).send({
                         "from": userAddress,
                         "value": fee
@@ -108,7 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (quantity >= 1 && quantity <= 10) {
                     const alreadyMintedAmount = parseInt(await contract.methods.mintedPerAddress(userAddress).call());
                     const payQuantity = alreadyMintedAmount > 0 ? quantity : quantity - 1;
-                    const fee = web3.utils.toBN(500000000000000 * payQuantity);
+                    const whitelistMintPrice = parseInt(await window.contract.methods.whitelistMintPrice().call());
+                    const fee = web3.utils.toBN(whitelistMintPrice * payQuantity);
                     const tx = await contract.methods.whitelistMint(whiteList[userAddress.toLowerCase()], quantity).send({
                         "from": userAddress,
                         "value": fee
