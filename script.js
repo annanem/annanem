@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 //  walletAddressSpan.style.display = "inline";
                 refreshMintCount();
                 updateCountdowns();
-                if (whiteList[userAddress] !== undefined) {
+                if (whiteList[userAddress.toLowerCase()] !== undefined) {
                     whitelistTextElement.textContent = "You are whitelisted";
                 } else {
                     whitelistTextElement.textContent = "You are NOT whitelisted";
