@@ -297,3 +297,7 @@ nav ul li a {
 #whitelistMint {
     display: none;
 }
+
+button:disabled {
+    background-color: gray
+}
