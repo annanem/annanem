@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     async function refreshMintCount() {
         const minted = parseInt(await contract.methods.totalSupply().call()) + "/" + parseInt(await contract.methods.maxSupply().call());
-        mintCountElement.textContent = minted;
+        mintCountElement.textContent = minted + " minted";
     }
     // Функция для подключения кнопки "Mint" с выбранным количеством NFT
     async function mintNFT(quantity) {
