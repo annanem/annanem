@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Подключение кошелька MetaMask
         if (typeof window.ethereum !== 'undefined') {
             try {
-                await connectWallet();
                 await window.ethereum.enable();
                 const accounts = await web3.eth.getAccounts();
                 const userAddress = accounts[0];
@@ -176,6 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Обработчик для кнопки "Mint"
     document.getElementById("mintButton").addEventListener("click", async () => {
+        await connectWallet();
         const quantity = parseInt(document.getElementById("quantity").value);
         if (isPublicMinting) {
             if (quantity >= 1 && quantity <= 10) {
