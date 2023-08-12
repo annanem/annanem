@@ -65,8 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateCountdowns();
                 if (whiteList[userAddress.toLowerCase()] !== undefined) {
                     whitelistTextElement.textContent = "You are whitelisted";
+                    document.getElementById('whitelistMint').style.display = 'inline-block';
                 } else {
                     whitelistTextElement.innerHTML = "You are <b>NOT</b> whitelisted";
+                    document.getElementById('whitelistMint').style.display = 'none';
                 }
             } catch (error) {
                 console.error("Error connecting wallet:", error);
