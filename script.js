@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 connectButton.textContent = shortenedAddress;
 
                 const currentUnixtime = (Math.floor(Date.now() / 1000));
-                isPublicMinting = currentUnixtime > parseInt(await contract.methods.startTime().call());
-                isWhitelistMinting = !isPublicMinting && currentUnixtime > parseInt(await contract.methods.whitelistMintTime().call());
+                isPublicMinting = currentUnixtime > parseInt(await contract.methods.startTime().call()) && currentUnixtime < parseInt(await contract.methods.endTime().call());
+                isWhitelistMinting = currentUnixtime > parseInt(await contract.methods.whitelistMintTime().call()) && currentUnixtime < parseInt(await contract.methods.whitelistMintEndTime().call());
                 document.getElementById('mintButton').disabled = !isPublicMinting;
                 // Показываем полный адрес рядом с кнопкой
                 //  walletAddressSpan.textContent = userAddress;
