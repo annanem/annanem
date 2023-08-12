@@ -276,3 +276,23 @@ nav ul li a {
 .scrolling-gallery>div>div:nth-child(13) {
     animation-delay: -0.3s;
 }
+
+.mint-options {
+    width: fit-content;
+    border: 2px white solid;
+    border-radius: 20px;
+    float: left;
+    position: relative;
+    display: inline-block;
+}
+
+.mint-options-row {
+    position: relative;
+    margin-left: auto;
+    width: fit-content;
+    margin-right: auto;
+}
+
+#whitelistMint {
+    display: none;
+}
