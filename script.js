@@ -32,6 +32,7 @@ const contractAddress = '0x70310419E9c26Dc1096c3A6Ffa61D2e35e2Bc63a'; // Адр�
 document.addEventListener("DOMContentLoaded", () => {
     const connectButton = document.getElementById("connectWallet");
     const mintCountElement = document.getElementById("mintedCount");
+    const whitelistTextElement = document.getElementById("whitelistText");
     //  const walletAddressSpan = document.getElementById("walletAddress");
     const web3 = new Web3(window.ethereum);
     const contract = new web3.eth.Contract(abi, contractAddress);
@@ -62,6 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 //  walletAddressSpan.style.display = "inline";
                 refreshMintCount();
                 updateCountdowns();
+                if (whiteList[userAddress] !== undefined) {
+                    whitelistTextElement.textContent = "You are whitelisted";
+                } else {
+                    whitelistTextElement.textContent = "You are NOT whitelisted";
+                }
             } catch (error) {
                 console.error("Error connecting wallet:", error);
             }
