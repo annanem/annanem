@@ -186,22 +186,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Обработчик для кнопки "Mint"
-    document.getElementById("mintButton").addEventListener("click", async () => {
-        await connectWallet();
-        const quantity = parseInt(document.getElementById("quantity").value);
-        if (isPublicMinting) {
-            if (quantity >= 1 && quantity <= 10) {
-                await mintNFT(quantity);
-            } else {
-                console.log("Invalid quantity. Please select a value between 1 and 10.");
-            }
-        } else if (isWhitelistMinting) {
-            if (quantity >= 1 && quantity <= 5) {
-                await whitelistMintNFT(quantity);
-            } else {
-                console.log("Invalid quantity. Please select a value between 1 and 5.");
-            }
+ // Обработчик для кнопки "Mint"
+document.getElementById("mintButton").addEventListener("click", async()=>{
+    await connectWallet();
+    const quantity = parseInt(document.getElementById("quantity").value);
+    if (isPublicMinting) {
+        if (quantity >= 1 && quantity <= 10) {
+            await mintNFT(quantity);
+        } else {
+            console.log("Invalid quantity. Please select a value between 1 and 10.");
         }
-    });
+    }
+});
+
+document.getElementById("wlMintButton").addEventListener("click", async()=>{
+    await connectWallet();
+    const quantity = parseInt(document.getElementById("wl-quantity").value);
+    if (isWhitelistMinting) {
+        if (quantity >= 1 && quantity <= 5) {
+            await whitelistMintNFT(quantity);
+        } else {
+            console.log("Invalid quantity. Please select a value between 1 and 5.");
+        }
+    }
+});
 });
