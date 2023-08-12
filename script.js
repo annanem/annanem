@@ -116,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Подключение кошелька MetaMask
         if (typeof window.ethereum !== 'undefined') {
             try {
+                await connectWallet();
                 await window.ethereum.enable();
                 const accounts = await web3.eth.getAccounts();
                 const userAddress = accounts[0];
