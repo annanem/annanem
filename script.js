@@ -120,36 +120,37 @@ document.addEventListener("DOMContentLoaded", () => {
     
         if (currentUnixtime < whitelistMintStartTime) {
             const whitelistMintCountdown = whitelistMintStartTime - currentUnixtime;
-            updateCountdownElement(whitelistMintCountdown, "whitelistMintCountdown", "Whitelist Mint starts in: ");
+            updateCountdownElement(whitelistMintCountdown, "whitelistMintCountdown");
         } else if (currentUnixtime < whitelistMintEndTime) {
             const whitelistMintCountdown = whitelistMintEndTime - currentUnixtime;
-            updateCountdownElement(whitelistMintCountdown, "whitelistMintCountdown", "Whitelist Mint ends in: ");
+            updateCountdownElement(whitelistMintCountdown, "whitelistMintCountdown");
         } else {
-            document.getElementById("whitelistMintCountdown").textContent = "CLOSED";
+            document.getElementById("whitelistMintCountdown").textContent = "Whitelist Mint: CLOSED";
         }
     
         if (currentUnixtime < publicMintStartTime) {
             const publicMintCountdown = publicMintStartTime - currentUnixtime;
-            updateCountdownElement(publicMintCountdown, "publicMintCountdown", "Public Mint starts in: ");
+            updateCountdownElement(publicMintCountdown, "publicMintCountdown");
         } else if (currentUnixtime < publicMintEndTime) {
             const publicMintCountdown = publicMintEndTime - currentUnixtime;
-            updateCountdownElement(publicMintCountdown, "publicMintCountdown", "Public Mint ends in: ");
+            updateCountdownElement(publicMintCountdown, "publicMintCountdown");
         } else {
-            document.getElementById("publicMintCountdown").textContent = "CLOSED";
+            document.getElementById("publicMintCountdown").textContent = "Public Mint: CLOSED";
         }
     }
     
-    function updateCountdownElement(countdown, elementId, prefix) {
+    function updateCountdownElement(countdown, elementId) {
         const countdownElement = document.getElementById(elementId);
         if (countdown > 0) {
-            const minutes = Math.floor(countdown / 60);
+            const days = Math.floor(countdown / (60 * 60 * 24));
+            const hours = Math.floor((countdown % (60 * 60 * 24)) / (60 * 60));
+            const minutes = Math.floor((countdown % (60 * 60)) / 60);
             const seconds = countdown % 60;
-            countdownElement.textContent = prefix + minutes + "m " + seconds + "s";
+            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         } else {
             countdownElement.textContent = "Done";
         }
     }
-      
     
   /*  async function updateCountdowns() {
         const currentUnixtime = (Math.floor(Date.now() / 1000));
