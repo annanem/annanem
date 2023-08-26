@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 //  walletAddressSpan.style.display = "inline";
                 refreshMintCount();
                 updateCountdowns();
+                setInterval(updateCountdowns, 1000); // Update timers every second
 
                 if (whiteList[userAddress.toLowerCase()] !== undefined) {
                     whitelistTextElement.textContent = "You are whitelisted";
@@ -161,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
             countdownElement.textContent = "CLOSED";
         }
     }
-
 
     /*  async function updateCountdowns() {
           const currentUnixtime = (Math.floor(Date.now() / 1000));
