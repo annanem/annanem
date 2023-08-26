@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script type="text/javascript" src="https://unpkg.com/web3@1.7.0/dist/web3.min.js"></script>
     <title>Bar-B 1</title>
 </head>
+
 <body>
     <header>
         <nav>
@@ -22,66 +24,70 @@
     </header>
     <main>
         <script src="script.js"></script>
-    
-    <section class="description-section">
-        <h1>Bar-B is the place where you need to be</h1>
-        <p>Future plans? Haha, we're all just a bunch of RUGs here, bro! But hey, don't throw in the towel just yet, give it a whirl later on, ya hear?</p>
-    </section>
+
+        <section class="description-section">
+            <h1>Bar-B is the place where you need to be</h1>
+            <p>Future plans? Haha, we're all just a bunch of RUGs here, bro! But hey, don't throw in the towel just yet,
+                give it a whirl later on, ya hear?</p>
+        </section>
         <section class="mint-section">
             <div class="mint-countdowns">
-                <p><b>time until whitelist mint: </b><span id="whitelistMintCountdown">CLOSED</span></p>
-                <p><b>time until public mint: </b><span id="publicMintCountdown">CLOSED</span></p>
+                <p><b>time until whitelist mint: </b><span id="whitelistMintCountdown"></span></p>
+                <p><b>time until public mint: </b><span id="publicMintCountdown"></span></p>
+
             </div>
-    <div class="mint-options-row">
-    <div id="whitelistMint" class="mint-options">
-            <div class="mint-text">
-                <h3>WL MINT:</h3>
-                <p>- 1st NFT is FREE</p>
-                <p>- next 0.0044 ETH</p>
-                <p>- 5 NFTs per trx</p>
+            <div class="mint-options-row">
+                <div id="whitelistMint" class="mint-options">
+                    <div class="mint-text">
+                        <h3>WL MINT:</h3>
+                        <p>- 1st NFT is FREE</p>
+                        <p>- next 0.0044 ETH</p>
+                        <p>- 5 NFTs per trx</p>
+                    </div>
+                    <div class="mint-quantity">
+                        <label for="wl-quantity">Quantity:</label>
+                        <select id="wl-quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5" selected="">5</option> <!-- Set to 5 by default -->
+                        </select>
+                        <p></p>
+                        <button class="mint-button" id="wlMintButton">WL Mint</button>
+                    </div>
+
+                </div>
+                <div id="publicMint" class="mint-options">
+                    <div class="mint-text">
+                        <h3>Public MINT:</h3>
+                        <p>- 1st NFT is FREE</p>
+                        <p>- next 0.0066 ETH</p>
+                        <p>- 10 NFTs per trx</p>
+                    </div>
+                    <div class="mint-quantity">
+                        <label for="quantity">Quantity:</label>
+                        <select id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5" selected="">5</option> <!-- Set to 5 by default -->
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <p></p>
+                        <button class="mint-button" id="mintButton">Mint</button>
+                    </div>
+                </div>
             </div>
-<div class="mint-quantity">
-                <label for="wl-quantity">Quantity:</label>
-                <select id="wl-quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5" selected="">5</option> <!-- Set to 5 by default -->
-                </select>
-                <p></p>
-                <button class="mint-button" id="wlMintButton">WL Mint</button>      
-    </div>
-    
-</div>
-            <div id="publicMint" class="mint-options">
-            <div class="mint-text">
-                <h3>Public MINT:</h3>
-                <p>- 1st NFT is FREE</p>
-                <p>- next 0.0066 ETH</p>
-                <p>- 10 NFTs per trx</p>
-            </div>
-<div class="mint-quantity">
-                <label for="quantity">Quantity:</label>
-                <select id="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5" selected="">5</option> <!-- Set to 5 by default -->
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-                <p></p>
-            <button class="mint-button" id="mintButton">Mint</button>       
-    </div>    
-</div>
-    </div>
-        <p id="whitelistText" style=" clear: both;"></p>
-            <p id="mintedCount">?/? minted</p></section> <section class="gallery-section">
+            <p id="whitelistText" style=" clear: both;"></p>
+            <p id="mintedCount">?/? minted</p>
+        </section>
+        <section class="gallery-section">
             <div class="gallery-container">
                 <div class="scrolling-gallery">
                     <div class="gallery">
@@ -106,7 +112,7 @@
                         <div class="gallery-item"><img src="9.png" alt="Image 9"></div>
                         <div class="gallery-item"><img src="10.png" alt="Image 10"></div>
                     </div>
-                     <div class="gallery">
+                    <div class="gallery">
                         <div class="gallery-item"><img src="1.png" alt="Image 1"></div>
                         <div class="gallery-item"><img src="2.png" alt="Image 2"></div>
                         <div class="gallery-item"><img src="3.png" alt="Image 3"></div>
@@ -127,9 +133,12 @@
                         <div class="gallery-item"><img src="8.png" alt="Image 8"></div>
                         <div class="gallery-item"><img src="9.png" alt="Image 9"></div>
                         <div class="gallery-item"><img src="10.png" alt="Image 10"></div>
-                    </div>         
-        </div></div></section>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
 </body>
+
 </html>

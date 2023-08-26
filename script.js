@@ -117,50 +117,39 @@ document.addEventListener("DOMContentLoaded", () => {
         const whitelistMintEndTime = parseInt(await contract.methods.whitelistMintEndTime().call());
         const publicMintStartTime = parseInt(await contract.methods.startTime().call());
         const publicMintEndTime = parseInt(await contract.methods.endTime().call());
-        
+    
         if (currentUnixtime < whitelistMintStartTime) {
             const whitelistMintCountdown = whitelistMintStartTime - currentUnixtime;
-            createTimer(whitelistMintCountdown, "whitelistMintCountdown", "Whitelist Mint starts in: ", function () {
-                console.log("Whitelist Mint START");
-            });
+            updateCountdownElement(whitelistMintCountdown, "whitelistMintCountdown", "Whitelist Mint starts in: ");
         } else if (currentUnixtime < whitelistMintEndTime) {
             const whitelistMintCountdown = whitelistMintEndTime - currentUnixtime;
-            createTimer(whitelistMintCountdown, "whitelistMintCountdown", "Whitelist Mint ends in: ", function () {
-                console.log("Whitelist Mint END");
-            });
-        } else if (currentUnixtime < publicMintStartTime) {
-            const publicMintCountdown = publicMintStartTime - currentUnixtime;
-            createTimer(publicMintCountdown, "publicMintCountdown", "Public Mint starts in: ", function () {
-                console.log("Public Mint START");
-            });
-        } else if (currentUnixtime < publicMintEndTime) {
-            const publicMintCountdown = publicMintEndTime - currentUnixtime;
-            createTimer(publicMintCountdown, "publicMintCountdown", "Public Mint ends in: ", function () {
-                console.log("Public Mint END");
-            });
+            updateCountdownElement(whitelistMintCountdown, "whitelistMintCountdown", "Whitelist Mint ends in: ");
         } else {
             document.getElementById("whitelistMintCountdown").textContent = "CLOSED";
+        }
+    
+        if (currentUnixtime < publicMintStartTime) {
+            const publicMintCountdown = publicMintStartTime - currentUnixtime;
+            updateCountdownElement(publicMintCountdown, "publicMintCountdown", "Public Mint starts in: ");
+        } else if (currentUnixtime < publicMintEndTime) {
+            const publicMintCountdown = publicMintEndTime - currentUnixtime;
+            updateCountdownElement(publicMintCountdown, "publicMintCountdown", "Public Mint ends in: ");
+        } else {
             document.getElementById("publicMintCountdown").textContent = "CLOSED";
-            console.log("CLOSED");
         }
     }
     
-    function createTimer(countdown, elementId, prefix, onFinish) {
+    function updateCountdownElement(countdown, elementId, prefix) {
         const countdownElement = document.getElementById(elementId);
         if (countdown > 0) {
             const minutes = Math.floor(countdown / 60);
             const seconds = countdown % 60;
             countdownElement.textContent = prefix + minutes + "m " + seconds + "s";
-            setTimeout(() => {
-                createTimer(countdown - 1, elementId, prefix, onFinish);
-            }, 1000);
         } else {
-            countdownElement.textContent = "CLOSED";
-            if (typeof onFinish === "function") {
-                onFinish();
-            }
+            countdownElement.textContent = "Done";
         }
     }
+      
     
   /*  async function updateCountdowns() {
         const currentUnixtime = (Math.floor(Date.now() / 1000));
