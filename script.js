@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
         countdownTimer = setInterval(timer, 1000);
     }
 
-    async function updateCountdowns() {
+   /*  async function updateCountdowns() {
         const currentUnixtime = Math.floor(Date.now() / 1000);
         const publicMintStartTime = parseInt(await contract.methods.startTime().call());
         const whitelistMintStartTime = parseInt(await contract.methods.whitelistMintTime().call());
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             document.getElementById("publicMintCountdown").textContent = "CLOSED";
             document.getElementById("whitelistMintCountdown").textContent = "CLOSED";
-            console.log("DONE");
+            console.log("CLOSED");
         }
     }
     
@@ -143,28 +143,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 createTimer(countdown - 1, elementId, prefix, onFinish);
             }, 1000);
         } else {
-            countdownElement.textContent = "Done";
+            countdownElement.textContent = "CLOSED";
             if (typeof onFinish === "function") {
                 onFinish();
             }
         }
-    }
+    }   */
     
-   /* async function updateCountdowns() {
+   async function updateCountdowns() {
         const currentUnixtime = (Math.floor(Date.now() / 1000));
         const publicMintCountdown = parseInt(await contract.methods.startTime().call()) - currentUnixtime;
         const whitelistMintCountdown = parseInt(await contract.methods.whitelistMintTime().call()) - currentUnixtime;
-        createTimer(publicMintCountdown, "publicMintCountdown", "Done", function () {
-            console.log("DONE");
+        createTimer(publicMintCountdown, "publicMintCountdown", "CLOSED", function () {
+            console.log("CLOSED");
         });
-        createTimer(whitelistMintCountdown, "whitelistMintCountdown", "Done", function () {
-            console.log("DONE");
+        createTimer(whitelistMintCountdown, "whitelistMintCountdown", "CLOSED", function () {
+            console.log("CLOSED");
         });
     }
     async function refreshMintCount() {
         const minted = parseInt(await contract.methods.totalSupply().call()) + "/" + parseInt(await contract.methods.maxSupply().call());
         mintCountElement.textContent = minted + " minted";
-    }   */
+    }   
 
     // Function to connect the "Mint" button with the selected number of NFTs
     async function mintNFT(quantity) {
