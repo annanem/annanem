@@ -20,7 +20,7 @@ nav ul {
     display: flex;
     font-size: 18px;
     padding: 0;
-    /* Убираем отступы */
+   /* Remove padding */
 }
 
 nav ul li {
@@ -40,39 +40,39 @@ nav ul li a {
     font-family: 'Silkscreen', Arial, sans-serif;
     padding: 8px 16px;
     border-radius: 10px;
-    /* Уменьшенное значение для закругления краев */
+  /* Reduced value for rounded edges */
     cursor: pointer;
     white-space: nowrap;
-    /* Текст всегда на одной строке */
+   /* Text always on one line */
     display: inline-block;
-    /* Элемент блочного типа для обработки ширины */
+  /* Block element to handle width */
     position: fixed;
-    /* Фиксировать кнопку */
+    /* Fix the button */
     top: 20px;
-    /* Отступ сверху */
+    /* Top padding */
     right: 20px;
-    /* Отступ справа */
+    /* Indent right */
     max-width: calc(100% - 40px);
-    /* Ограничение максимальной ширины кнопки */
+    /* Limit the maximum width of the button */
 }
 
 @media (max-width: 769px) {
 
-    /* Применять стили только на десктопных устройствах */
+    /* Apply styles only on desktop devices */
     .connect-button {
         white-space: nowrap;
-        /* Текст всегда на одной строке */
+        /* Text always on one line */
         width: auto;
-        /* Автоматически определить ширину кнопки */
+        /* Automatically determine the width of the button */
         position: relative;
-        /* Вернуть нормальное позиционирование */
+        /* Return normal positioning */
         margin-left: auto;
         margin-right: auto;
-        /* Сбросить вертикальный отступ */
+        /* Reset vertical padding */
 
-        /* Сбросить горизонтальный отступ */
+        /* Reset horizontal padding */
         max-width: none;
-        /* Убрать ограничение максимальной ширины */
+        /* Remove max-width limit */
         top: unset;
         right: unset;
     }
@@ -100,9 +100,7 @@ nav ul li a {
 .mint-quantity {
     margin-bottom: 20px;
     font-size: 18px;
-    /* Изменение размера шрифта */
     color: #ffffff;
-    /* Изменение цвета текста */
     font-family: 'Silkscreen', Arial, sans-serif;
 }
 
@@ -114,28 +112,20 @@ nav ul li a {
 
 .mint-quantity select {
     font-size: 20px;
-    /* Изменение размера шрифта для цифр в select */
     font-family: 'Silkscreen', Arial, sans-serif;
     color: #f4f4f4;
-    /* Изменение цвета цифр в select */
     background-color: rgb(253, 73, 172);
-    /* Изменение фона цифр в select */
     border: 1px solid #ccc;
-    /* Изменение границы цифр в select */
     border-radius: 5px;
     padding: 5px;
 }
 
 .mint-text {
     text-align: left;
-    /* Выравнивание текста по левому краю */
     margin: 0 auto;
-    /* Центрирование контейнера по горизонтали */
     max-width: 190px;
-    /* Опционально: ограничение максимальной ширины контейнера */
     padding: 20px;
     line-height: 0.5;
-    /* Убираем отступы между строчками */
 }
 
 .mint-button {
