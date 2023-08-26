@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
         countdownTimer = setInterval(timer, 1000);
     }
 
-   /*  async function updateCountdowns() {
+    async function updateCountdowns() {
         const currentUnixtime = Math.floor(Date.now() / 1000);
         const publicMintStartTime = parseInt(await contract.methods.startTime().call());
         const whitelistMintStartTime = parseInt(await contract.methods.whitelistMintTime().call());
@@ -148,9 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 onFinish();
             }
         }
-    }   */
+    }  
     
-   async function updateCountdowns() {
+  /*  async function updateCountdowns() {
         const currentUnixtime = (Math.floor(Date.now() / 1000));
         const publicMintCountdown = parseInt(await contract.methods.startTime().call()) - currentUnixtime;
         const whitelistMintCountdown = parseInt(await contract.methods.whitelistMintTime().call()) - currentUnixtime;
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
         createTimer(whitelistMintCountdown, "whitelistMintCountdown", "CLOSED", function () {
             console.log("CLOSED");
         });
-    }
+    } */
 
     async function refreshMintCount() {
         const minted = parseInt(await contract.methods.totalSupply().call()) + "/" + parseInt(await contract.methods.maxSupply().call());
