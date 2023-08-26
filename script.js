@@ -139,9 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("Public Mint END");
             });
         } else {
-            document.getElementById("whitelistMintCountdown").textContent = "Done";
-            document.getElementById("publicMintCountdown").textContent = "Done";
-            console.log("DONE");
+            document.getElementById("whitelistMintCountdown").textContent = "CLOSED";
+            document.getElementById("publicMintCountdown").textContent = "CLOSED";
+            console.log("CLOSED");
         }
     }
     
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 createTimer(countdown - 1, elementId, prefix, onFinish);
             }, 1000);
         } else {
-            countdownElement.textContent = "Done";
+            countdownElement.textContent = "CLOSED";
             if (typeof onFinish === "function") {
                 onFinish();
             }
