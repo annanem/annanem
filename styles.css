@@ -4,6 +4,7 @@ body {
     background-color: rgb(228, 49, 147);
     color: white;
     width: 100%;
+    overflow-x: clip;
 }
 
 header {
